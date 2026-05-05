@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Classmates System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: linear-gradient(to right, #F891BB, #FAACBF, #F13E93);
+    text-align: center;
+}
+
+/* NAVBAR */
+.navbar-custom {
+    display:flex;
+    justify-content:space-between;
+    padding:15px 30px;
+    background:linear-gradient(to right,#D6336C,#FF4081);
+    color:white;
+}
+
+.nav-right a {
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.card {
+    background:white;
+    width:90%;
+    max-width:900px;
+    margin:30px auto;
+    padding:30px;
+    border-radius:12px;
+}
+
+button {
+    margin-top:10px;
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar-custom">
+    <div><b>10-Ruby</b></div>
+    <div class="nav-right">
+        <a href="index.html">Classmates</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="photos.html">Gallery</a>
+    </div>
+</div>
+
+<div class="card">
+<h2>Classmates System</h2>
+
+<input id="name" class="form-control mb-2" placeholder="Name">
+<input id="section" class="form-control mb-2" placeholder="Section">
+<input id="subject" class="form-control mb-2" placeholder="Favorite Subject">
+
+<button class="btn btn-primary" onclick="addClassmate()">Add</button>
+<button class="btn btn-success" onclick="showClassmates()">Show</button>
+
+<div id="output"></div>
+</div>
+
+<script>
+
+class Classmate {
+    constructor(name, section, subject){
+        this.name = name;
+        this.section = section;
+        this.subject = subject;
+    }
+
+    introduce(){
+        return `Hi! I am ${this.name} from ${this.section}. My favorite subject is ${this.subject}.`;
+    }
+}
+
+let classmates = [
+    new Classmate("Mauri","Ruby","Math"),
+    new Classmate("Samantha","Ruby","Science"),
+    new Classmate("Queeny","Ruby","English")
+];
+
+function showClassmates(){
+    let text = "";
+    classmates.forEach(c => text += c.introduce() + "<br>");
+    document.getElementById("output").innerHTML = text;
+}
+
+function addClassmate(){
+    let n = document.getElementById("name").value;
+    let s = document.getElementById("section").value;
+    let sub = document.getElementById("subject").value;
+
+    if(!n||!s||!sub){
+        alert("Fill all fields");
+        return;
+    }
+
+    classmates.push(new Classmate(n,s,sub));
+
+    name.value = section.value = subject.value = "";
+    showClassmates();
+}
+
+</script>
+
+</body>
+</html>

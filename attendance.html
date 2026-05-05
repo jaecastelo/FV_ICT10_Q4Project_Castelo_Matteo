@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Attendance Tracker</title>
+
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+<py-config>
+packages = ["numpy", "matplotlib"]
+</py-config>
+
+<style>
+body { margin:0; font-family:Arial; }
+
+.navbar-custom {
+    display:flex;
+    justify-content:space-between;
+    padding:15px 30px;
+    background:linear-gradient(to right,#D6336C,#FF4081);
+    color:white;
+}
+
+.nav-right a {
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+}
+
+.main {
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    height:90vh;
+    background:#F891BB;
+}
+
+.box {
+    background:#FCB7C7;
+    padding:20px;
+    border-radius:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar-custom">
+    <div><b>10-Ruby</b></div>
+    <div class="nav-right">
+        <a href="index.html">Classmates</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="photos.html">Gallery</a>
+    </div>
+</div>
+
+<div class="main">
+
+<div class="box">
+<h3>Attendance Tracker</h3>
+
+<select id="day">
+<option>Monday</option>
+<option>Tuesday</option>
+<option>Wednesday</option>
+<option>Thursday</option>
+<option>Friday</option>
+</select>
+ <br><br>
+        <label>Absences:</label><br>
+        <br><br>
+<input type="number" id="absence">
+<button py-click="attendance_tracker">Submit</button>
+</div>
+
+<div id="output"></div>
+
+</div>
+
+<script type="py" src="main.py"></script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gallery</title>
+
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+<style>
+body { margin:0; font-family:Arial; background:#f2f2f2; }
+
+.navbar-custom {
+    display:flex;
+    justify-content:space-between;
+    padding:15px 30px;
+    background:linear-gradient(to right,#D6336C,#FF4081);
+    color:white;
+}
+
+.nav-right a {
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+}
+
+.gallery {
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:20px;
+    padding:30px;
+}
+
+.card {
+    background:white;
+    padding:10px;
+    border-radius:10px;
+}
+
+img {
+    width:100%;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar-custom">
+    <div><b>10-Ruby</b></div>
+    <div class="nav-right">
+        <a href="index.html">Classmates</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="photos.html">Gallery</a>
+    </div>
+</div>
+
+<h2 style="text-align:center;">Class Activities</h2>
+
+<div id="gallery" class="gallery"></div>
+
+<script type="py">
+from pyscript import document
+
+photos = [
+("images/photo1.jpg","Activity 1"),
+("images/photo2.jpg","Activity 2"),
+("images/photo3.jpg","Activity 3")
+]
+
+g = document.getElementById("gallery")
+
+for p in photos:
+    g.innerHTML += f"<div class='card'><img src='{p[0]}'><p>{p[1]}</p></div>"
+</script>
+
+</body>
+</html>
